@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Visite</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Ospedale Privato ITT Giorgi</h1>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('dottori') }}">Dottori</a>
+            <a href="{{ url_for('pazienti') }}">Pazienti</a>
+            <a href="{{ url_for('visite') }}">Visite</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Elenco Visite</h2>
+
+        <table>
+            <tr>
+                <th>Dottore</th>
+                <th>Paziente</th>
+                <th>Data</th>
+                <th>Ora</th>
+            </tr>
+
+            {% for v in lista_filtrata %}
+            <tr>
+                <td>{{ v.CODDOTTORE }}</td>
+                <td>{{ v.CF }}</td>
+                <td>{{ v.DATA }}</td>
+                <td>{{ v.ORA }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </main>
+
+</body>
+</html>

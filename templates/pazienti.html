@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="it">
+    {% extends "base.html" %}
+
+    {% block content%}
+    <h2>Elenco Pazienti</h2>
+
+        <table>
+            <tr>
+                <th>Codice</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Età</th>
+                <th>Pagina Visite</th>
+            </tr>
+
+            {% for p in paziente %}
+            <tr>
+                <td>{{ p.CF }}</td>
+                <td>{{ p.NOME }}</td>
+                <td>{{ p.COGNOME }}</td>
+                <td>{{ p.ETA }}</td>
+                <td><a href="{{ url_for('visite', codice=p.CF, tipo='Paziente') }}">Visite</a></td>
+            </tr>
+            {% endfor %}
+        </table>    
+    
+    {% endblock %}
+
+    <footer id="footer">
+        <p>Contatti: <a href="mailto:francescosimone397@gmail.com">francescosimone397@gmail.com</a></p>
+    </footer>
+</body>
+</html>

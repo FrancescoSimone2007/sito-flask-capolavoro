@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+{% extends "base.html" %}
+
+
+{% block content%}
+
+<h2>Professionisti al tuo servizio</h2>
+<div style="display: flex; justify-content: center; gap: 80px; margin-top: 50px;">
+    {% for dottore in dottori %}
+    <div>
+        <img src="https://hairsense.in/wp-content/uploads/2024/12/pngtree-photo-men-doctor-physician-chest-smiling-png-image_10132895.png"
+            width="150">
+        <h1>{{ dottore.NOME }}</h1>
+        <h1>{{ dottore.COGNOME }}</h1>
+        <h1>{{ dottore.SPECIALIZZAZIONE }}</h1>
+        <a href="{{ url_for('visite', codice=dottore.CODDOTTORE, tipo='Dottore') }}">
+            <button>Visite</button>
+        </a>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+<h2>Elenco Dottori</h2>
+
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Specializzazione</th>
+        <th>Pagina Visite</th>
+    </tr>
+
+    {% for d in dottori %}
+    <tr>
+        <td>{{ d.NOME  }}</td>
+        <td>{{ d.SPECIALIZZAZIONE  }}</td>
+        <td><a href="{{ url_for('visite', codice=d.CODDOTTORE, tipo='Dottore') }}">Visite</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}
+
+</main>
+
+<footer id="footer">
+    <p>Contattaci: <a href="mailto:francescosimone397@gmail.com">francescosimone397</a></p>
+</footer>
+</body>
+
+</html>
